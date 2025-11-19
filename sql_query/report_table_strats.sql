@@ -5,6 +5,7 @@ SELECT
     CAST(linked.DueDate AS DATE) AS [OG_DueDate],
     main.CaseNumber AS MainCaseNumber,
     CAST(main.ShipDate AS DATE) AS [ShipDate],
+    CAST(main.DateIn AS DATE) AS [DateIn],
 
     -- Summary Data from T2 (Last 90 Days)
     ISNULL(T2.Cases, 0) AS TotalCases_90Days,
