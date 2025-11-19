@@ -21,7 +21,7 @@ INNER JOIN dbo.Customers AS cust ON main.customerID = cust.customerID
 WHERE links.Notes LIKE '%Remake Of%'
 AND main.DateIn >= DATEADD(DAY, -60, CAST(GETDATE() AS DATE))
 AND main.[Status] IN ('In Production', 'Invoiced', 'On Hold')
-AND main.DateIn < '2025-11-22'
-AND main.DateIn < '2025-11-23'
+--AND main.DateIn > '2025-11-22'
+--AND main.DateIn < '2025-11-23'
 ORDER BY main.DateIn ASC;
 
