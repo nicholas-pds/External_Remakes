@@ -12,7 +12,7 @@ SQL_QUERIES_DIR = PROJECT_ROOT / "sql_query"
 SQL_TO_SHEET_TAB = {
     "remake_cases.sql": "Cases Import",
     "revenue_by_day.sql": "Revenue Import",
-    "customer_remakes.sql": "Customers Import",
+    "report_table_strats.sql": "Report Table Import",
 }
 
 def main():
@@ -31,7 +31,7 @@ def main():
     query_files = [
         "remake_cases.sql",
         "revenue_by_day.sql",
-        "customer_remakes.sql",
+        "report_table_strats.sql",
     ]
 
     dataframes = {}
