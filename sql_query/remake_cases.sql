@@ -15,7 +15,8 @@ SELECT
     -- Select the results from the joined subquery, using ISNULL/COALESCE
     -- to replace NULLs (no match) with 0s.
     ISNULL(T2.Cases, 0) AS TotalCases_90Days,
-    ISNULL(T2.Remakes, 0) AS TotalRemakes_90Days
+    ISNULL(T2.Remakes, 0) AS TotalRemakes_90Days,
+    cust.SalesPerson
 FROM
     dbo.CaseLinks AS links
 INNER JOIN
