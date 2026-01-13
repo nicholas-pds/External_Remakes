@@ -17,7 +17,8 @@ SELECT
         WHEN ISNULL(T2.Cases, 0) = 0 THEN 0.00
         -- Otherwise, calculate the percentage
         ELSE (CAST(ISNULL(T2.Remakes, 0) AS DECIMAL(10, 2)) / ISNULL(T2.Cases, 0))
-    END AS [Remake Percentage]
+    END AS [Remake Percentage],
+    cust.SalesPerson
 FROM
     dbo.CaseLinks AS links
 INNER JOIN
