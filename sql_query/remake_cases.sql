@@ -53,6 +53,7 @@ OUTER APPLY
     FROM dbo.CaseProducts AS cp
     INNER JOIN dbo.Products AS p ON cp.ProductID = p.ProductID
     WHERE cp.CaseID = linked.CaseID
+      AND p.Description NOT LIKE '%Rush%'
     ORDER BY cp.UnitPrice DESC
 ) AS topProduct
 -- **FIRST QUERY - WHERE Clause**
