@@ -16,7 +16,8 @@ SELECT
     -- to replace NULLs (no match) with 0s.
     ISNULL(T2.Cases, 0) AS TotalCases_90Days,
     ISNULL(T2.Remakes, 0) AS TotalRemakes_90Days,
-    cust.SalesPerson
+    cust.SalesPerson,
+    topProduct.ProductID AS Product
 FROM
     dbo.CaseLinks AS links
 INNER JOIN
@@ -46,6 +47,13 @@ LEFT JOIN
     GROUP BY
         cu.PracticeName
 ) AS T2 ON cust.PracticeName = T2.PracticeName
+OUTER APPLY
+(
+    SELECT TOP 1 cp.ProductID
+    FROM dbo.CaseProducts AS cp
+    WHERE cp.CaseID = linked.CaseID
+    ORDER BY cp.UnitPrice DESC
+) AS topProduct
 -- **FIRST QUERY - WHERE Clause**
 WHERE
     links.Notes LIKE '%Remake Of%'
