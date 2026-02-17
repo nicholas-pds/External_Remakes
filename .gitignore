@@ -33,6 +33,9 @@ $RECYCLE.BIN/
 .vscode/
 *.code-workspace
 
+# Claude Code
+.claude/
+
 # Project-specific folder ignores
 input/
 output/
