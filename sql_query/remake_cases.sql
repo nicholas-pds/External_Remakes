@@ -17,7 +17,7 @@ SELECT
     ISNULL(T2.Cases, 0) AS TotalCases_90Days,
     ISNULL(T2.Remakes, 0) AS TotalRemakes_90Days,
     cust.SalesPerson,
-    topProduct.ProductID AS Product
+    topProduct.Description AS Product
 FROM
     dbo.CaseLinks AS links
 INNER JOIN
@@ -49,8 +49,9 @@ LEFT JOIN
 ) AS T2 ON cust.PracticeName = T2.PracticeName
 OUTER APPLY
 (
-    SELECT TOP 1 cp.ProductID
+    SELECT TOP 1 p.Description
     FROM dbo.CaseProducts AS cp
+    INNER JOIN dbo.Products AS p ON cp.ProductID = p.ProductID
     WHERE cp.CaseID = linked.CaseID
     ORDER BY cp.UnitPrice DESC
 ) AS topProduct
